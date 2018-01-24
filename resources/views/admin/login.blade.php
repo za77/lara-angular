@@ -1,95 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- BEGIN HEAD -->
+<!doctype html>
+<!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-	<meta content="" name="description"/>
-	<meta content="" name="author"/>
-	
-	<title>JCI - India Projects</title>
-	
-	<!-- BEGIN CORE FRAMEWORK -->
-	<link href="{{url('/public/admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
-	<link href="{{url('/public/admin/assets/plugins/ionicons/css/ionicons.min.css')}}" rel="stylesheet" />
-	<link href="{{url('/public/admin/assets/plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" />
-	<!-- END CORE FRAMEWORK -->
-	
-	<!-- BEGIN PLUGIN STYLES -->
-	<link href="{{url('/public/admin/assets/plugins/animate/animate.css')}}" rel="stylesheet" />
-	<link href="{{url('/public/admin/assets/plugins/bootstrapValidator/bootstrapValidator.min.css')}}" rel="stylesheet" />
-	<link href="{{url('/public/admin/assets/plugins/switchery/switchery.min.css')}}" rel="stylesheet" />
-	<!-- END PLUGIN STYLES -->
-	
-	<!-- BEGIN THEME STYLES -->
-	<link href="{{url('/public/admin/assets/css/material.css')}}" rel="stylesheet" />
-	<link href="{{url('/public/admin/assets/css/style.css')}}" rel="stylesheet" />
-	<link href="{{url('/public/admin/assets/css/plugins.css')}}" rel="stylesheet" />
-	<link href="{{url('/public/admin/assets/css/helpers.css')}}" rel="stylesheet" />
-	<link href="{{url('/public/admin/assets/css/responsive.css')}}" rel="stylesheet" />
-	<!-- END THEME STYLES -->
-    
-    <link href="{{url('/public/admin/assets/img/favicon.ico')}}" type="image/x-icon" rel="icon">
-    
-</head>
-<!-- END HEAD -->
-<!-- BEGIN BODY -->
-<body class="auth-page height-auto" style="background-color:#0088cf;" >
-	<!-- BEGIN CONTENT -->
-	<div class="wrapper animated fadeInDown">
-		<div class="panel overflow-hidden">
-			<div class="bg-white padding-top-25 no-margin-bottom font-size-20 color-white text-center text-uppercase">
-				<img src="{{url('/public/admin/assets/img/logo-new.png')}}">
-			</div>
-			<form id="checkform" method="post" action="{{ url('/login')}}">
-				<div class="box-body padding-md">	
-				
-					<div class="form-group">
-						<input type="text" name="email" class="form-control input-lg" placeholder="Username"/>
-					</div>
-					
-					<div class="form-group">
-						<input type="password" name="password" class="form-control input-lg" placeholder="Password"/>
-					</div>        
-					
-					<div class="form-group margin-top-20 text-right">
-						<a href="" class="color-blue-600">Forgot Password?</a>
-					</div>  
-														
-					<button type="submit"  class="btn btn-dark bg-blue-600 padding-10 btn-block color-white"><i class="ion-log-in"></i> Login</button>  
-				</div>
-				{{ csrf_field() }}
-			</form>
-			<div class="panel-footer padding-md no-margin no-border bg-grey-500 text-center color-white">&copy; 2018 WITT Gas Lead Form. All Rights Reserved.</div>
-		</div>
-	</div>
-	<!-- END CONTENT -->
-	<script type="text/javascript"></script>
-	<!-- BEGIN JAVASCRIPTS -->
-	
-	<!-- BEGIN CORE PLUGINS -->
-	<script src="{{url('/public/admin/assets/plugins/jquery-1.11.1.min.js')}}" type="text/javascript"></script>
-	<script src="{{url('/public/admin/assets/plugins/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
-	<script src="{{url('/public/admin/assets/plugins/bootstrap/js/holder.js')}}"></script>
-	<script src="{{url('/public/admin/assets/plugins/slimScroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
-	<script src="{{url('/public/admin/assets/js/core.js')}}" type="text/javascript"></script>
-	<!-- END CORE PLUGINS -->
-	
-	<!-- bootstrap validator -->
-	<script src="{{url('/public/admin/assets/plugins/bootstrapValidator/bootstrapValidator.min.js')}}" type="text/javascript"></script>
-	
-	<!-- switchery -->
-	<script src="{{url('/public/admin/assets/plugins/switchery/switchery.min.js')}}" type="text/javascript"></script>
-	
-	<!-- maniac -->
-	
-	<script src="{{url('/public/js/app.min.js')}}" type="text/javascript"></script>
-	
-	
-	<!-- END JAVASCRIPTS -->
-</body>
-<!-- END BODY -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Remove Tap Highlight on Windows Phone IE -->
+    <meta name="msapplication-tap-highlight" content="no"/>
 
-<!-- Mirrored from yakuzi.eu/maniac/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Oct 2016 07:04:45 GMT -->
+    <link rel="icon" type="image/png" href="{{asset('public/assets/img/favicon-16x16.png')}}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{{asset('public/assets/img/favicon-32x32.png')}}" sizes="32x32">
+
+    <title>Altair Admin v2.2.0 - Login Page</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+
+    <!-- uikit -->
+    <link rel="stylesheet" href="{{asset('public/bower_components/uikit/css/uikit.almost-flat.min.css')}}"/>
+
+    <!-- altair admin login page -->
+    <link rel="stylesheet" href="{{asset('public/assets/css/login_page.min.css')}}" />
+
+</head>
+<body class="login_page">
+
+    <div class="login_page_wrapper">
+        <div class="md-card" id="login_card">
+            <div class="md-card-content large-padding" id="login_form">
+                <div class="login_heading">
+                    <div class="user_avatar"></div>
+                </div>
+                <form  action="{{ url('/dologin')}}" method="post">
+                    <div class="uk-form-row">
+                        <label for="login_username">Username</label>
+                        <input class="md-input" type="text" id="login_username" name="email" />
+                    </div>
+                    <div class="uk-form-row">
+                        <label for="login_password">Password</label>
+                        <input class="md-input" type="password" id="login_password" name="password" />
+                    </div>
+                    <div class="uk-margin-medium-top">
+                        <a href="{{ url('/')}}"   class="md-btn md-btn-primary md-btn-block md-btn-large">Sign In</a>
+                    </div>
+                    <div class="uk-margin-top">
+                        <a href="#" id="login_help_show" class="uk-float-right">Need help?</a>
+                        <span class="icheck-inline">
+                            <input type="checkbox" name="login_page_stay_signed" id="login_page_stay_signed" data-md-icheck />
+                            <label for="login_page_stay_signed" class="inline-label">Stay signed in</label>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="md-card-content large-padding uk-position-relative" id="login_help" style="display: none">
+                <button type="button" class="uk-position-top-right uk-close uk-margin-right uk-margin-top back_to_login"></button>
+                <h2 class="heading_b uk-text-success">Can't log in?</h2>
+                <p>Here’s the info to get you back in to your account as quickly as possible.</p>
+                <p>First, try the easiest thing: if you remember your password but it isn’t working, make sure that Caps Lock is turned off, and that your username is spelled correctly, and then try again.</p>
+                <p>If your password still isn’t working, it’s time to <a href="#" id="password_reset_show">reset your password</a>.</p>
+            </div>
+            <div class="md-card-content large-padding" id="login_password_reset" style="display: none">
+                <button type="button" class="uk-position-top-right uk-close uk-margin-right uk-margin-top back_to_login"></button>
+                <h2 class="heading_a uk-margin-large-bottom">Reset password</h2>
+                <form>
+                    <div class="uk-form-row">
+                        <label for="login_email_reset">Your email address</label>
+                        <input class="md-input" type="text" id="login_email_reset" name="login_email_reset" />
+                    </div>
+                    <div class="uk-margin-medium-top">
+                        <a href="index.html" class="md-btn md-btn-primary md-btn-block">Reset password</a>
+                    </div>
+                </form>
+            </div>
+            <div class="md-card-content large-padding" id="register_form" style="display: none">
+                <button type="button" class="uk-position-top-right uk-close uk-margin-right uk-margin-top back_to_login"></button>
+                <h2 class="heading_a uk-margin-medium-bottom">Create an account</h2>
+                <form>
+                    <div class="uk-form-row">
+                        <label for="register_username">Username</label>
+                        <input class="md-input" type="text" id="register_username" name="register_username" />
+                    </div>
+                    <div class="uk-form-row">
+                        <label for="register_password">Password</label>
+                        <input class="md-input" type="password" id="register_password" name="register_password" />
+                    </div>
+                    <div class="uk-form-row">
+                        <label for="register_password_repeat">Repeat Password</label>
+                        <input class="md-input" type="password" id="register_password_repeat" name="register_password_repeat" />
+                    </div>
+                    <div class="uk-form-row">
+                        <label for="register_email">E-mail</label>
+                        <input class="md-input" type="text" id="register_email" name="register_email" />
+                    </div>
+                    <div class="uk-margin-medium-top">
+                        <a href="index.html" class="md-btn md-btn-primary md-btn-block md-btn-large">Sign Up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="uk-margin-top uk-text-center">
+            <a href="#" id="signup_form_show">Create an account</a>
+        </div>
+    </div>
+
+    <!-- common functions -->
+    <script src="{{asset('public/assets/js/common.min.js')}}"></script>
+    <!-- altair core functions -->
+    <script src="{{asset('public/assets/js/altair_admin_common.min.js')}}"></script>
+
+    <!-- altair login page functions -->
+    <script src="{{asset('public/assets/js/pages/login.min.js')}}"></script>
+
+</body>
 </html>

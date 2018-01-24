@@ -12,14 +12,6 @@
 */
 
 
-/*Api*/
-Route::POST('/api/register','ApiController@register');
-Route::POST('/api/login','ApiController@login');
-Route::POST('/api/profileUpdate','ApiController@profileUpdate');
-Route::get('api/logout', 'ApiController@logout');
-
-/*Api ENd*/
-
 
 /*Developer*/
 Route::get('/developer', 'ArtisanController@developer')->middleware('guest:Dev');
@@ -36,7 +28,8 @@ Route::get('/developer/cronDetails', 'ArtisanController@cronDetails')->middlewar
 
 Route::get('/login', 'DashController@login');
 Route::post('/login', 'DashController@doLogin');
-Route::get('/', 'DashController@index')->middleware('guest:Admin');
+Route::get('/', 'DashController@master');
+Route::get('/admin/Dashboard/index', 'DashController@index');
 Route::get('/logout','DashController@logout');
 Route::get('/fire','DashController@fire');
 Route::get('/ip','DashController@ip');

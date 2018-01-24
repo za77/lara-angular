@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
 use App\lib\Library;
-use App\ab_users;
-use App\ab_notifications;   
+use App\tbl_users;
+use App\tbl_notifications;   
 use App\User;
 use Exception;
 use Storage;
@@ -23,8 +23,8 @@ class DashController extends Controller
     public function __construct()
     {
         $pro = config('global.model');
-        $users = new ab_users;
-        $notifications = new ab_notifications;
+        $users = new tbl_users;
+        $notifications = new tbl_notifications;
         $library = new Library();
         $user = new user();
 
@@ -92,10 +92,14 @@ class DashController extends Controller
         $request->session()->forget('authId');
         return redirect('/login')->with('status','Logout Successfully');
     }
+    public function master()
+    {
+        return view('admin.Master');
+    }
     public function index()
     {
         
-    	return view('admin.index');
+    	return view('admin.Dashboard.index');
     }
 
     public function ip(Request $request)

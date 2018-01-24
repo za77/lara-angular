@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\lib\Library;
-use App\ab_loginLog;
+use App\tbl_loginLog;
 
 class User extends Authenticatable
 {
@@ -15,7 +15,7 @@ class User extends Authenticatable
     public function __construct()
     {
         $this->lib = new Library();
-        $this->loginLog = new ab_loginLog();
+        $this->loginLog = new tbl_loginLog();
        
     }
     public function login($req)

@@ -3,9 +3,9 @@
 return [
 	'Title' => 'HD Site',
 	'logo' => 5,
-	'model' => 'ab',
+	'model' => 'tbl',
 	'profilePicture' => '/uploads/profilePicture/',
-	'projectEmail'=>'lara@gmail.com',
+	'projectEmail'=>'lara-angular@gmail.com',
 	'projectPassword'=>'admin',
 	'projectMobile'=>'9874563210',
 	

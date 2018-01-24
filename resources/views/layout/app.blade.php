@@ -1,99 +1,297 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- BEGIN HEAD -->
+<!doctype html>
+<!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-	<meta content="" name="description"/>
-	<meta content="" name="author"/>
-	
-	<title>JCI - @yield('title')</title>
-	
-	<!-- BEGIN CORE FRAMEWORK -->
-	<link href="{{ url('public/admin/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-	<link href="{{ url('public/admin/assets/plugins/ionicons/css/ionicons.min.css') }}" rel="stylesheet" />
-	<link href="{{ url('public/admin/assets/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
-	<!-- END CORE FRAMEWORK -->
-	
-	<!-- BEGIN PLUGIN STYLES -->
-	<link href="{{ url('public/admin/assets/plugins/animate/animate.css') }}" rel="stylesheet" />
-	<link href="{{ url('public/admin/assets/plugins/bootstrap-slider/css/slider.css') }}" rel="stylesheet" />
-	<link href="{{ url('public/admin/assets/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet" />
-	<!-- END PLUGIN STYLES -->
-	
-	<!-- BEGIN THEME STYLES -->
-	<link href="{{ url('public/admin/assets/css/material.css') }}" rel="stylesheet" />
-	<link href="{{ url('public/admin/assets/css/style.css') }}" rel="stylesheet" />
-	<link href="{{ url('public/admin/assets/css/plugins.css') }}" rel="stylesheet" />
-	<link href="{{ url('public/admin/assets/css/helpers.css') }}" rel="stylesheet" />
-	<link href="{{ url('public/admin/assets/css/responsive.css') }}" rel="stylesheet" />
-	<!-- END THEME STYLES -->
-    
-    <link href="{{ url('public/admin/assets/img/favicon.ico') }}" type="image/x-icon" rel="icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Remove Tap Highlight on Windows Phone IE -->
+    <meta name="msapplication-tap-highlight" content="no"/>
 
+    <link rel="icon" type="image/png" href="{{asset('public/assets/img/favicon-16x16.png')}}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{{asset('public/assets/img/favicon-32x32.png')}}" sizes="32x32">
+
+    <title>Altair Admin v2.2.0</title>
+
+    <!-- additional styles for plugins -->
+        <!-- weather icons -->
+        <link rel="stylesheet" 
+        href="{{asset('public/bower_components/weather-icons/css/weather-icons.min.css')}}" media="all">
+        <!-- metrics graphics (charts) -->
+        <link rel="stylesheet" href="{{asset('public/bower_components/metrics-graphics/dist/metricsgraphics.css')}}">
+        <!-- chartist -->
+        <link rel="stylesheet" href="{{asset('public/bower_components/chartist/dist/chartist.min.css')}}">
     
-    
-    
+    <!-- uikit -->
+    <link rel="stylesheet" href="{{asset('public/bower_components/uikit/css/uikit.almost-flat.min.css')}}" media="all">
+
+    <!-- flag icons -->
+    <link rel="stylesheet" href="{{asset('public/assets/icons/flags/flags.min.css')}}" media="all">
+
+    <!-- altair admin -->
+    <link rel="stylesheet" href="{{asset('public/assets/css/main.min.css')}}" media="all">
+
+    <script src="{{asset('public/bower_components/angular/angular.min.js')}}"></script>
+    <script src="{{asset('public/bower_components/angular-route/angular-route.min.js')}}"></script>
+    <script src="{{asset('public/bower_components/angular-cookie/angular-cookie.min.js')}}"></script>
+
 </head>
-<!-- END HEAD -->
-<!-- BEGIN BODY -->
-<body class="fixed-leftside fixed-header">
-	<!-- BEGIN HEADER -->
-	 @include('layout.header')
-	<!-- END HEADER -->
-		 
-	<div class="wrapper">
-		<!-- BEGIN LEFTSIDE -->
-       @include('layout.sidebar')
-		<!-- END LEFTSIDE -->
+<body class=" sidebar_main_open sidebar_main_swipe">
+    <!-- main header -->
+   @include('layout.header')
+    <!-- main sidebar -->
+    @include('layout.side')
+    <!-- main sidebar end -->
 
-		 @yield('content')
-        
-    </div><!-- /.wrapper -->
-	<!-- END CONTENT -->
-		
-	<!-- BEGIN JAVASCRIPTS -->
-	
-	<!-- BEGIN CORE PLUGINS -->
-	<script src="{{ url('public/admin/assets/plugins/jquery-1.11.1.min.js') }}" type="text/javascript"></script>
-	<script src="{{ url('public/admin/assets/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
-	<script src="{{ url('public/admin/assets/plugins/bootstrap/js/holder.js') }}"></script>
-	<script src="{{ url('public/admin/assets/plugins/pace/pace.min.js') }}" type="text/javascript"></script>
-	<script src="{{ url('public/admin/assets/plugins/slimScroll/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
-	<script src="{{ url('public/admin/assets/js/core.js') }}" type="text/javascript"></script>
-	<!-- END CORE PLUGINS -->
-	
-	
-	
-    <!-- datatables -->
-	<script src="{{ url('public/admin/assets/plugins/datatables/jquery.dataTables.js') }}" type="text/javascript"></script>
-	<script src="{{ url('public/admin/assets/plugins/datatables/dataTables.bootstrap.js') }}" type="text/javascript"></script>
-	
-	<!-- counter -->
-	<script src="{{ url('public/admin/assets/plugins/jquery-countTo/jquery.countTo.js') }}" type="text/javascript"></script>
-	<script src="{{ url('public/admin/assets/customjs/custom.min.js') }}" type="text/javascript"></script>
-	<script src="{{ url('public/js/jciLib.min.js') }}" type="text/javascript" /></script>
+    <div id="page_content">
+        @yield('content')
+    </div>
 
-	
+    <!-- google web fonts -->
+    <script>
+        WebFontConfig = {
+            google: {
+                families: [
+                    'Source+Code+Pro:400,700:latin',
+                    'Roboto:400,300,500,700,400italic:latin'
+                ]
+            }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+
+    <!-- common functions -->
+    <script src="{{asset('public/assets/js/common.min.js')}}"></script>
+    <!-- uikit functions -->
+    <script src="{{asset('public/assets/js/uikit_custom.min.js')}}"></script>
+    <!-- altair common functions/helpers -->
+    <script src="{{asset('public/assets/js/altair_admin_common.min.js')}}"></script>
+
+    <!-- page specific plugins -->
+        <!-- d3 -->
+        <script src="{{asset('public/bower_components/d3/d3.min.js')}}"></script>
+        <!-- metrics graphics (charts) -->
+        <script src="{{asset('public/bower_components/metrics-graphics/dist/metricsgraphics.min.js')}}"></script>
+        <!-- chartist (charts) -->
+        <script src="{{asset('public/bower_components/chartist/dist/chartist.min.js')}}"></script>
+        <!-- maplace (google maps) -->
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script src="{{asset('public/bower_components/maplace-js/dist/maplace.min.js')}}"></script>
+        <!-- peity (small charts) -->
+        <script src="{{asset('public/bower_components/peity/jquery.peity.min.js')}}"></script>
+        <!-- easy-pie-chart (circular statistics) -->
+        <script src="{{asset('public/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js')}}"></script>
+        <!-- countUp -->
+        <script src="{{asset('public/bower_components/countUp.js')}}/countUp.min.js')}}"></script>
+        <!-- handlebars.js')}} -->
+        <script src="{{asset('public/bower_components/handlebars/handlebars.min.js')}}"></script>
+        <script src="{{asset('public/assets/js/custom/handlebars_helpers.min.js')}}"></script>
+        <!-- CLNDR -->
+        <script src="{{asset('public/bower_components/clndr/src/clndr.js')}}"></script>
+        <!-- fitvids -->
+        <script src="{{asset('public/bower_components/fitvids/jquery.fitvids.js')}}"></script>
+
+        <!--  dashbord functions -->
+        <script src="{{asset('public/assets/js/pages/dashboard.min.js')}}"></script>
     
-    <script type="text/javascript">
-    	$(document).ready(function() {
-    $('table.display').DataTable();
-} );
+    <script>
+        $(function() {
+            // enable hires images
+            altair_helpers.retina_images();
+            // fastClick (touch devices)
+            if(Modernizr.touch) {
+                FastClick.attach(document.body);
+            }
+        });
     </script>
 
 
+    <div id="style_switcher">
+        <div id="style_switcher_toggle"><i class="material-icons">&#xE8B8;</i></div>
+        <div class="uk-margin-medium-bottom">
+            <h4 class="heading_c uk-margin-bottom">Colors</h4>
+            <ul class="switcher_app_themes" id="theme_switcher">
+                <li class="app_style_default active_theme" data-app-theme="">
+                    <span class="app_color_main"></span>
+                    <span class="app_color_accent"></span>
+                </li>
+                <li class="switcher_theme_a" data-app-theme="app_theme_a">
+                    <span class="app_color_main"></span>
+                    <span class="app_color_accent"></span>
+                </li>
+                <li class="switcher_theme_b" data-app-theme="app_theme_b">
+                    <span class="app_color_main"></span>
+                    <span class="app_color_accent"></span>
+                </li>
+                <li class="switcher_theme_c" data-app-theme="app_theme_c">
+                    <span class="app_color_main"></span>
+                    <span class="app_color_accent"></span>
+                </li>
+                <li class="switcher_theme_d" data-app-theme="app_theme_d">
+                    <span class="app_color_main"></span>
+                    <span class="app_color_accent"></span>
+                </li>
+                <li class="switcher_theme_e" data-app-theme="app_theme_e">
+                    <span class="app_color_main"></span>
+                    <span class="app_color_accent"></span>
+                </li>
+                <li class="switcher_theme_f" data-app-theme="app_theme_f">
+                    <span class="app_color_main"></span>
+                    <span class="app_color_accent"></span>
+                </li>
+                <li class="switcher_theme_g" data-app-theme="app_theme_g">
+                    <span class="app_color_main"></span>
+                    <span class="app_color_accent"></span>
+                </li>
+                <li class="switcher_theme_h" data-app-theme="app_theme_h">
+                    <span class="app_color_main"></span>
+                    <span class="app_color_accent"></span>
+                </li>
+                <li class="switcher_theme_i" data-app-theme="app_theme_i">
+                    <span class="app_color_main"></span>
+                    <span class="app_color_accent"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="uk-visible-large uk-margin-medium-bottom">
+            <h4 class="heading_c">Sidebar</h4>
+            <p>
+                <input type="checkbox" name="style_sidebar_mini" id="style_sidebar_mini" data-md-icheck />
+                <label for="style_sidebar_mini" class="inline-label">Mini Sidebar</label>
+            </p>
+        </div>
+        <div class="uk-visible-large uk-margin-medium-bottom">
+            <h4 class="heading_c">Layout</h4>
+            <p>
+                <input type="checkbox" name="style_layout_boxed" id="style_layout_boxed" data-md-icheck />
+                <label for="style_layout_boxed" class="inline-label">Boxed layout</label>
+            </p>
+        </div>
+        <div class="uk-visible-large">
+            <h4 class="heading_c">Main menu accordion</h4>
+            <p>
+                <input type="checkbox" name="accordion_mode_main_menu" id="accordion_mode_main_menu" data-md-icheck />
+                <label for="accordion_mode_main_menu" class="inline-label">Accordion mode</label>
+            </p>
+        </div>
+    </div>
 
-<script>
-  // Initialize Firebase
-  
+    <script>
+        $(function() {
+            var $switcher = $('#style_switcher'),
+                $switcher_toggle = $('#style_switcher_toggle'),
+                $theme_switcher = $('#theme_switcher'),
+                $mini_sidebar_toggle = $('#style_sidebar_mini'),
+                $boxed_layout_toggle = $('#style_layout_boxed'),
+                $accordion_mode_toggle = $('#accordion_mode_main_menu'),
+                $body = $('body');
 
 
-</script>
-	 
+            $switcher_toggle.click(function(e) {
+                e.preventDefault();
+                $switcher.toggleClass('switcher_active');
+            });
 
-	<!-- END JAVASCRIPTS -->
+            $theme_switcher.children('li').click(function(e) {
+                e.preventDefault();
+                var $this = $(this),
+                    this_theme = $this.attr('data-app-theme');
+
+                $theme_switcher.children('li').removeClass('active_theme');
+                $(this).addClass('active_theme');
+                $body
+                    .removeClass('app_theme_a app_theme_b app_theme_c app_theme_d app_theme_e app_theme_f app_theme_g app_theme_h app_theme_i')
+                    .addClass(this_theme);
+
+                if(this_theme == '') {
+                    localStorage.removeItem('altair_theme');
+                } else {
+                    localStorage.setItem("altair_theme", this_theme);
+                }
+
+            });
+
+            // hide style switcher
+            $document.on('click keyup', function(e) {
+                if( $switcher.hasClass('switcher_active') ) {
+                    if (
+                        ( !$(e.target).closest($switcher).length )
+                        || ( e.keyCode == 27 )
+                    ) {
+                        $switcher.removeClass('switcher_active');
+                    }
+                }
+            });
+
+            // get theme from local storage
+            if(localStorage.getItem("altair_theme") !== null) {
+                $theme_switcher.children('li[data-app-theme='+localStorage.getItem("altair_theme")+']').click();
+            }
+
+
+        // toggle mini sidebar
+
+            // change input's state to checked if mini sidebar is active
+            if((localStorage.getItem("altair_sidebar_mini") !== null && localStorage.getItem("altair_sidebar_mini") == '1') || $body.hasClass('sidebar_mini')) {
+                $mini_sidebar_toggle.iCheck('check');
+            }
+
+            $mini_sidebar_toggle
+                .on('ifChecked', function(event){
+                    $switcher.removeClass('switcher_active');
+                    localStorage.setItem("altair_sidebar_mini", '1');
+                    location.reload(true);
+                })
+                .on('ifUnchecked', function(event){
+                    $switcher.removeClass('switcher_active');
+                    localStorage.removeItem('altair_sidebar_mini');
+                    location.reload(true);
+                });
+
+
+        // toggle boxed layout
+
+            if((localStorage.getItem("altair_layout") !== null && localStorage.getItem("altair_layout") == 'boxed') || $body.hasClass('boxed_layout')) {
+                $boxed_layout_toggle.iCheck('check');
+                $body.addClass('boxed_layout');
+                $(window).resize();
+            }
+
+            $boxed_layout_toggle
+                .on('ifChecked', function(event){
+                    $switcher.removeClass('switcher_active');
+                    localStorage.setItem("altair_layout", 'boxed');
+                    location.reload(true);
+                })
+                .on('ifUnchecked', function(event){
+                    $switcher.removeClass('switcher_active');
+                    localStorage.removeItem('altair_layout');
+                    location.reload(true);
+                });
+
+        // main menu accordion mode
+            if($sidebar_main.hasClass('accordion_mode')) {
+                $accordion_mode_toggle.iCheck('check');
+            }
+
+            $accordion_mode_toggle
+                .on('ifChecked', function(){
+                    $sidebar_main.addClass('accordion_mode');
+                })
+                .on('ifUnchecked', function(){
+                    $sidebar_main.removeClass('accordion_mode');
+                });
+
+
+        });
+    </script>
 </body>
-<!-- END BODY -->
 </html>
